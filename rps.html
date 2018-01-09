@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    let score = 0
+
+    function computerPlay() {
+        let result = Math.floor(Math.random() * 3)
+        //console.log(result)
+        if (result == 0) {
+            return 'rock'
+        } else if (result == 1) {
+            return 'paper'
+        } else if (result == 2) {
+            return 'scissors'
+        }
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == 'rock') {
+            if (computerSelection == 'scissors') {
+                score += 1
+                return "You win! Rock beats scissors!"
+            } else if (computerSelection == 'paper') {
+                return "You lose! Rock loses to paper!"
+            } else {
+                return "Rock versus rock! It's a draw!"
+            }
+        } else if (playerSelection == 'paper') {
+            if (computerSelection == 'rock') {
+                score +=1
+                return "You win! Paper beats rock!"
+            } else if (computerSelection == 'scissors') {
+                return "You lose! Paper loses to scissors!"
+            } else {
+                return "Paper versus paper! It's a draw!"
+            }
+        } else if (playerSelection == 'scissors') {
+              if (computerSelection == 'paper') {
+                score += 1
+                return "You win! Scissors beats paper!"
+            } else if (computerSelection == 'rock') {
+                return "You lose! Scissors lose to rock!"
+            } else {
+                return "Scissors versus scissors! It's a draw!"
+            }
+        } else {
+            return "I don't recognize that word!"
+        }
+
+
+    }
+
+    function game(gameLength) {
+        for (var i = 1; i < gameLength + 1; i++) {
+            console.log("=== Game " + i + " ===")
+            const computerSelection = computerPlay()
+            playerSelection = prompt("Choose rock, paper or scissors:")
+            console.log(playRound(playerSelection, computerSelection))
+        }
+        console.log("Your score: " + score + "/5")
+    }
+
+game(5)
+
+</script>
